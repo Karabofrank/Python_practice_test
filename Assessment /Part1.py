@@ -1,35 +1,107 @@
 def compute_standard_deviation(numbers):
     """Compute the standard deviation of a list of numbers"""
-    pass
+    sum = 0
+    added = 0
+    if len(numbers) == 0:
+        return None
+   
+    #Find the mean
+    for i in numbers:
+        sum = sum + i
+    mean = sum / len(numbers)
+
+    deviations = []
+    #Subtract the mean from each number
+    for x in numbers:
+        devs = x - mean
+        deviations.append(devs)
+    
+    squares = []
+    #Square each deviation
+    for i in deviations:
+        deviations_squared = i**2
+        squares.append(deviations_squared)
+    
+    #Ad the squared deviations, divide the sum by the number of numbers and then take the square root
+    for i in squares:
+        added = added + i
+        added_devs = added / len(numbers)
+        standard_dev = added_devs**(0.5)
+    print(standard_dev)
+    return standard_dev
 
 def find_second_largest(numbers):
     """Find the second largest number in a list"""
-    pass
+    list1 = []
+    for i in numbers:
+        if i not in list1:
+            list1.append(i)
+
+    list1 = sorted(list1)
+    if len(list1) <= 1:
+        return None
+    
+    return list1[-2]
+
+    
 def character_frequency_per_word(sentence):
     """Return a dictionary of character frequencies for each word in a sentence"""
-    pass
+    a = {}
+    b = {}
+    sentence = sentence.split(" ")
+    for word in sentence:
+        b[word] = {}
+        for i in word:
+            if i in b[word]:
+                b[word][i] += 1
+            else:
+                b[word][i] = 1
+    return b
 
 def check_palindrome(numbers):
     """Check if a list of numbers is a palindrome"""
-    pass
+    for i in range(len(numbers)):
+        if numbers[i] != numbers[len(numbers) - 1 - i]:
+            return False
+    return True
 
 def longest_word_in_sentence(sentence):
     """Return the longest word in a sentence"""
-    pass
+    sentence = sentence.split(" ")
+    a = []
+    for word in sentence:
+        a.append(len(word))
+    return sentence[a.index(max(a))]
+    
 def merge_sorted_lists(list1, list2):
     """Merge two sorted lists into one sorted list"""
-    pass
+    return sorted(list1 + list2)    
+    
 def find_intersection(list1, list2):
     """Find the intersection (common elements) of two lists"""
-    pass
+    a = []
+    for i in list1:
+        if i in list2:
+            a.append(i)
+    return a
 
 def nth_fibonacci(n):
     """Calculate the nth Fibonacci number using both recursion and iteration"""
     pass
 def reverse_words_in_sentence(sentence):
     """Reverse the words in a sentence while maintaining word order"""
-    pass
-
+    sentence = sentence.split(" ")
+    a = []
+    for i in range(len(sentence) - 1, -1, -1):
+        a.append(sentence[i])
+    return " ".join(a)
 def unique_characters_in_string(s):
     """Return all unique characters in a string"""
-    pass
+    a = []
+    for i in s:
+        a.append(i)
+    b = []
+    for i in a:
+        if i not in b:
+            b.append(i)
+    return "".join(sorted(b))
