@@ -2,33 +2,34 @@ def compute_standard_deviation(numbers):
     """Compute the standard deviation of a list of numbers"""
     sum = 0
     added = 0
-    if len(numbers) == 0:
-        return None
-   
-    #Find the mean
-    for i in numbers:
-        sum = sum + i
-    mean = sum / len(numbers)
-
     deviations = []
-    #Subtract the mean from each number
-    for x in numbers:
-        devs = x - mean
+    squared = []
+    
+    if numbers == []:
+        return None
+    
+    #Find the mean
+    for num in numbers:
+        sum = sum + num
+    mean = sum / len(numbers)
+    
+    #Subtract the mean from each number (Deviations)
+    for i in numbers:
+        devs = i - mean
         deviations.append(devs)
-    
-    squares = []
+
     #Square each deviation
-    for i in deviations:
-        deviations_squared = i**2
-        squares.append(deviations_squared)
+    for dvs in deviations:
+        squared_deviations = dvs**2
+        squared.append(squared_deviations)
     
-    #Ad the squared deviations, divide the sum by the number of numbers and then take the square root
-    for i in squares:
-        added = added + i
+    #Add the squared deviations, divide the sum by the length of numbers and then take the square root
+    for _ in squared:
+        added = added + _
         added_devs = added / len(numbers)
-        standard_dev = added_devs**(0.5)
-    print(standard_dev)
-    return standard_dev
+        sums = (added_devs)**0.5
+    return sums
+
 
 def find_second_largest(numbers):
     """Find the second largest number in a list"""
@@ -87,7 +88,7 @@ def find_intersection(list1, list2):
 
 def nth_fibonacci(n):
     """Calculate the nth Fibonacci number using both recursion and iteration"""
-    pass
+    
 def reverse_words_in_sentence(sentence):
     """Reverse the words in a sentence while maintaining word order"""
     sentence = sentence.split(" ")
@@ -105,3 +106,10 @@ def unique_characters_in_string(s):
         if i not in b:
             b.append(i)
     return "".join(sorted(b))
+
+def factorial(num):
+    if num == 0:
+        return 1
+    else:
+        return num * factorial(num - 1)
+print(factorial(5))
